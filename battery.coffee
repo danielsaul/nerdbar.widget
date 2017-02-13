@@ -5,15 +5,15 @@ refreshFrequency: 15000 # ms
 render: (output) ->
   """
   <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
-  <div class="battery"
-    <span></span>
-    <span class="icon"></span>
+  <div class="battery">
+    <span class="icon" style="font-size: 10px !important"></span>
+    <span class="txt" style="padding-left: 3px;"></span>
   </div>
   """
 
 update: (output, el) ->
     bat = parseInt(output)
-    $(".battery span:first-child", el).text("  #{output}")
+    $(".battery span.txt", el).text("  #{output}")
     $icon = $(".battery span.icon", el)
     $icon.removeClass().addClass("icon")
     $icon.addClass("fa #{@icon(bat)}")
@@ -32,8 +32,12 @@ icon: (output) =>
 
 style: """
   -webkit-font-smoothing: antialiased
-  font: 9px Input
-  top: 7px
-  right: 160px
   color: #d5c4a1
+  font: 11px 'Helvetica Neue'
+  right: 165px
+  top: 6px
+  height: 16px
+  overflow: hidden
+  text-overflow: ellipsis
+  width: auto
 """
